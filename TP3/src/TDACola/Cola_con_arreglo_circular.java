@@ -1,4 +1,7 @@
 package TDACola;
+
+import TDAPila.EmptyStackException;
+
 public class Cola_con_arreglo_circular<E>implements Queue<E> {
 	protected int f; protected int r;
 	protected E q[];
@@ -21,8 +24,8 @@ public class Cola_con_arreglo_circular<E>implements Queue<E> {
 		else return q[f];
 	}
 	public void enqueue(E element) {
-		if (size()==(q.length)) 
-			redimensionar();
+		if (size()==(q.length-1)) 
+			resize();
 		
 		q[r]=element;
 		r= (r+1) % q.length;
@@ -37,14 +40,23 @@ public class Cola_con_arreglo_circular<E>implements Queue<E> {
 			return aux;
 		}
 	}
-	private void redimensionar() {
-		E[] nuevo = (E[]) new Object [q.length+50];
-		for (int i=0; i<q.length;i++) {
-			nuevo[i]=q[i];
-		}
+
+	private void resize() {
+		E[] nuevo = (E[]) new Object[2*(q.length)];
+		int tamaño = size();
+		try {
+			int i=0;
+			while (!isEmpty()) {
+				nuevo[i]=dequeue();
+				i++;
+			}
 			q=nuevo;
+			f=0;
+			r=tamaño;
+		}catch(EmptyQueueException e) {}
 	}
 }
+
 	
 
 

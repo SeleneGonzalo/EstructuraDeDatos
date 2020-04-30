@@ -21,7 +21,7 @@ public class QueueTest {
 	 * Por ejemplo: ArrayQueue<String> o LinkedQueue<String>.
 	 */
 	private Queue<String> getQueue(){
-		return new colaConPila<String>();
+		return new Cola_con_arreglo_circular<String>();
 	}
 	
 	/*
