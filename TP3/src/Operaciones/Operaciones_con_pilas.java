@@ -24,18 +24,15 @@ public class Operaciones_con_pilas {
 		 try {
 			 while (!pilaone.isEmpty()) pilatwo.push(pilaone.pop());
 		 } catch (EmptyStackException e) {
-			 e.printStackTrace();
 		 }
 	 }
-	 private static Stack<Integer> aplanar(Stack<Stack<Integer>> pilaGeneral) {
-	        Stack<Integer> pilanueva = new Pila_con_enlaces<Integer>();
+	 private static Stack<Integer> aplanar(Stack<Stack<Integer>> pilaGeneral,Stack<Integer> pilanueva) {
 	        try {
 	            Stack<Integer> a;
 	            a = pilaGeneral.pop();
-	            aplanar(pilaGeneral);
+	            aplanar(pilaGeneral,pilanueva);
 	            aplanarEnteros(a, pilanueva);
 	        }catch(EmptyStackException e) {
-	            e.printStackTrace();
 	        }
 	        return pilanueva;
 	 }
@@ -46,7 +43,47 @@ public class Operaciones_con_pilas {
 	            aplanarEnteros(pila,pilanueva);
 	            pilanueva.push(a);
 	        }catch(EmptyStackException e) {
-	            e.printStackTrace();
 	        }
+	    }
+	    
+	    public static void main(String[] args) {
+	        Stack<Stack<Integer>> Principal = new Pila_con_enlaces<Stack<Integer>>();
+	        Stack<Integer> A = new Pila_con_enlaces<Integer>();
+	        Stack<Integer> B = new Pila_con_enlaces<Integer>();
+	        Stack<Integer> C = new Pila_con_enlaces<Integer>();
+
+	        A.push(1);
+	        A.push(2);
+	        A.push(3);
+
+	        B.push(4);
+	        B.push(5);
+	        B.push(6);
+
+	        C.push(7);
+	        C.push(8);
+	        C.push(9);
+
+	        Principal.push(A);
+	        Principal.push(B);
+	        Principal.push(C);
+	        
+
+	        Stack<Integer> Aplanado = new Pila_con_enlaces<Integer>();
+	        Aplanado = aplanar(Principal,Aplanado);
+	        try {
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+				System.out.println(Aplanado.pop());
+			} catch (EmptyStackException e) {
+			}
+
+	        System.out.println(Aplanado.size());
 	    }
 }
