@@ -104,8 +104,6 @@ public class Lista_doble_enlazada<E> implements PositionList<E> {
 	public Iterator<E> iterator() {
 		return new ElementIterator<E>(this);
 	}
-
-
 	public Iterable<Position<E>> positions() {
 		PositionList<Position<E>> iterable;
 		iterable = new Lista_doble_enlazada<Position<E>>();
@@ -118,7 +116,6 @@ public class Lista_doble_enlazada<E> implements PositionList<E> {
 		}
 		return iterable;
 	}
-	
 	
 	private DNodo<E> checkPosition(Position<E>p) throws InvalidPositionException{
 		try {
@@ -150,6 +147,7 @@ public class Lista_doble_enlazada<E> implements PositionList<E> {
         a.addLast(2);
         a.addLast(3);
         a.addLast(4);
+        a.mostrar();
         System.out.println("ZIGZAG: ");
         Lista_doble_enlazada<Integer> a2 = (Lista_doble_enlazada<Integer>) a.zigzag();
         a2.mostrar();
